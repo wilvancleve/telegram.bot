@@ -197,6 +197,46 @@ deleteMessage <- function(chat_id,
   invisible(result)
 } # nocov end
 
+#' Edit a message
+#'
+#' Use this method to edit a message. A message can only be edited if it was
+#' sent less than 48 hours ago. Any such recently sent message may be
+#' edited. 
+#'
+#' You can also use it's snake_case equivalent \code{delete_message}.
+#' @param chat_id Unique identifier for the target chat or username of
+#'     the target channel.
+#' @param message_id Identifier of the message to delete.
+
+editMessageText <- function(chat_id,
+                        message_id,
+                        inline_message_id,
+                        text,
+                        parse_mode = NULL,
+                        disable_web_page_preview = NULL,
+                        reply_markup = NULL) {
+  url <- sprintf("%s/editMessageText", private$base_url)
+
+  data <- list(
+    chat_id = chat_id,
+    message_id = message_id,
+    text = text
+  )
+
+  if (!missing(parse_mode)) {
+    data[["parse_mode"]] <- parse_mode
+  }
+  if (!missing(disable_web_page_preview)) {
+    data[["disable_web_page_preview"]] <- disable_web_page_preview
+  }
+  if (!missing(reply_markup)) {
+    data[["reply_markup"]] <- to_json(reply_markup)
+  }
+
+  result <- private$request(url, data)
+  invisible(result)
+}
+
 
 #' Forward messages of any kind
 #'
