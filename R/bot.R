@@ -203,10 +203,24 @@ deleteMessage <- function(chat_id,
 #' sent less than 48 hours ago. Any such recently sent message may be
 #' edited. 
 #'
-#' You can also use it's snake_case equivalent \code{delete_message}.
+#' You can also use it's snake_case equivalent \code{edit_message_text}.
 #' @param chat_id Unique identifier for the target chat or username of
 #'     the target channel.
-#' @param message_id Identifier of the message to delete.
+#' @param message_id Identifier of the message to edit
+#' @param text Text of the message to be used in replacement.
+#' @param parse_mode (Optional). Send 'Markdown' or 'HTML', if you want
+#'     Telegram apps to show bold, italic, fixed-width text or inline URLs in
+#'     your bot's message.
+#' @param disable_web_page_preview (Optional). Disables link previews for links
+#'     in this message.
+#' @param reply_markup (Optional). A Reply Markup parameter object, it can be
+#'     either:
+#'     \itemize{
+#'      \item{\code{\link{ReplyKeyboardMarkup}}}
+#'      \item{\code{\link{InlineKeyboardMarkup}}}
+#'      \item{\code{\link{ReplyKeyboardRemove}}}
+#'      \item{\code{\link{ForceReply}}}
+#'     }
 
 editMessageText <- function(chat_id,
                         message_id,
