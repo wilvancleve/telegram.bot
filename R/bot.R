@@ -210,7 +210,6 @@ deleteMessage <- function(chat_id,
 
 editMessageText <- function(chat_id,
                         message_id,
-                        inline_message_id,
                         text,
                         parse_mode = NULL,
                         disable_web_page_preview = NULL,
